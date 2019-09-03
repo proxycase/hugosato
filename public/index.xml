@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hughs Blog</title>
+    <link>http://proxycase.github.io/</link>
+    <description>Recent content on Hughs Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Sep 2019 14:15:44 -0500</lastBuildDate>
+    
+	<atom:link href="http://proxycase.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My First Post</title>
+      <link>http://proxycase.github.io/posts/my-first-post/</link>
+      <pubDate>Tue, 03 Sep 2019 14:15:44 -0500</pubDate>
+      
+      <guid>http://proxycase.github.io/posts/my-first-post/</guid>
+      <description>Hello!</description>
+    </item>
+    
+  </channel>
+</rss>

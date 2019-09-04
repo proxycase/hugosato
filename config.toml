@@ -1,4 +1,5 @@
 baseURL = "http://proxycase.github.io/"
 languageCode = "en-us"
-title = "Hughs Blog"
+title = "Hugh's Apprenticeship Blog"
 theme = "ananke"
+owner = "Hugh Sato"

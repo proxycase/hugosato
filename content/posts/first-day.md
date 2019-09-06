@@ -4,8 +4,6 @@ date: 2019-09-03T14:15:44-05:00
 draft: false
 ---
 
-# First Day at 8th Light
-
 Hi! I'm Hugh, and today marks my first day as a Design Apprentice at 8th Light. For the last several years, I worked as a makerspace coordinator at the Northbrook Public Library, and helped design and build the makerspace from the ground-up, creating access to tools like 3D printers and laser cutters to the public. I created policies that shaped our services and opened up access to those outside of our own library, knowing that Northbrook is a unique area with plenty of resources to share. 
 
 For a while, it was really meaningful work and I enjoyed it a lot, but I was yearning to get back closer to my roots in design, where I knew I could use those skills to create better tools for people to access information. The practice of design combines a lot of my experiences and interests, particularly those around creative problem-solving, research, iterative processes, aesthetics, human-computer interfaces, museum exhibits, immersive/interactive art, and more.

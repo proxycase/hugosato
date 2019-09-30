@@ -1,4 +1,4 @@
-baseURL = "http://proxycase.github.io/"
+baseURL = "https://proxycase.github.io/"
 languageCode = "en-us"
 title = "Hugh Sato"
 theme = "ezhil"
@@ -8,8 +8,6 @@ pygmentsstyle = "vs"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-# Your Google analytics code.
-googleAnalytics = "UA-123-45"
 # Your Disqus sortname.
 disqusShortname = "localhost"
 

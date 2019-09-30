@@ -8,3 +8,6 @@
 	path = public
 	url = git@github.com:proxycase/proxycase.github.io.git
 	branch = master
+[submodule "themes/themes/ananke"]
+	path = themes/themes/ananke
+	url = https://github.com/budparr/gohugo-theme-ananke.git

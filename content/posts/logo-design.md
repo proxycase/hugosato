@@ -47,11 +47,11 @@ I asked Gina, another designer if she’d take a look at where I was so far, and
 
 Up to that point, I had been toying around with some organic circles, that remind me of some graphical rocks that I once saw in some Scandinavian design at some point. I’ve always identified with and admired design from that colder region of the world for their sense of contemplative, bold but quaint characteristics. Combining that with the dragonfly textile imagery really hit the spot for me.
 
-![](/h-logo-01.jpg)
+![Logo Iteration 1](/img/h-logo-01.jpg)
 
 From there, I thought about spicing up the text a little. I started on Futura, a font that I know carries a lot of design baggage, which could work, but in its current iteration, I’m working with serif fonts to help it push away from the child-like imagery just enough to make it distinguished, crafted, and disciplined. I added some spacing in the eyes and wings to help it read from a distance, and arrived at the following.
 
-![](/h-logo-03.jpg)
+![Logo Iteration Final](/img/h-logo-03.jpg)
 
 There's two options, based on the context. The black and white one is for print and physical designs, while the color can live anywhere on the internet.
 

@@ -8,9 +8,6 @@ pygmentsstyle = "vs"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-# Your Disqus sortname.
-# disqusShortname = "localhost"
-
 # Number of posts to show in recent posts list (Optional). Defaults to 10.
 paginate = 10
 

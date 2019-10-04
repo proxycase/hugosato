@@ -1,5 +1,5 @@
 ---
-title: "Evidence Based Design"
+title: "Evidence Based (UX) Design"
 date: 2019-10-04T14:41:18-05:00
 draft: false
 ---

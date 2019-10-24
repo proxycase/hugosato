@@ -1,0 +1,213 @@
+---
+title: "Html Elements Part I"
+date: 2019-10-21T13:43:09-05:00
+draft: false
+---
+
+In the following articles, I attempt to re-configure and define all the html elements in my own words and also try to figure out where they belong in relationship to each other. Part one of two.
+
+## The Head
+| |       
+|----|----|
+`<html>`	|	Is the root level of an himl document. All other elements are children of this element.
+
+| |       
+|----|----|
+`<head>`	|	Container for machine-readable information like metadata. These are things like your title, scripts and stylesheets.
+ `<base>` 	|	Specified the base URL to use for all relative URLs in a document. This is helpful when you have most of all of your assets nested in another folder and you don’t want to repeat yourself across the html.
+`<link>`	|	Link your external resources like stylesheets, favicon, and more.
+`<style>`	|	Contains embedded style information for a document, or part of a document. Overrides imported styles from <link>
+`<title>`	|	Defines the title shown at the top in a browser.
+`<meta>`	|	Metadata that can’t be described by the other meta-related elements, like charset. Often uses a name and content attribute as a key pair.
+
+---
+## Sectioning Root: The Body
+| |       
+|----|----|
+`<body>`	|	Container for the content of an HTML document. There can only be one `<body>` to rule them all, find them, bring them all and in the document bind them… in a single html document.
+
+---
+## Sectioning Content
+| |       
+|----|----|
+`<header>` | Contains introductory information or navigational aids. Can also contain a logo, search form, authors, etc.
+`<footer>` | Contains footer for its nearest sectioning content or sectioning root element. Can contain the author for the section, copyright data, or links related to the section. Note: not only used for the footer of an entire website, but can be used for bottoms of blog post lists, and more.
+
+| |       
+|----|----|
+`<hgroup>` | Groups a set of h1-h6 tags
+`<h1> <h2> <h3> <h4> <h5> <h6>` | Six levels of section headings. Avoid skipping heading levels, so start from h1 and work your way down to h6. Also avoid using h1 more than once on a page. Don’t use them to resize text –  instead, use font-size.
+
+| |       
+|----|----|
+`<address>` | Contains HTML provides contact information.
+`<aside>` | Represents content only indirectly related to document’s main content.
+`<main>` | Represents the main content area of the `<body>` of the document. Contains content that is directly related to or expands upon the central topic of a document.
+`<nav>`	 | Contains the section that provides navigation links either within or outside of the current document. Commonly, these are menus, tables of content, and indexes.
+`<section>`	 | Represents a standalone section, which doesn’t already have a more semantic element to represent it.
+
+---
+## Dividing Content
+### Sections and Dividers
+| |       
+|----|----|
+`<div>`		|	The Content Division element, which is a generic container for most anything that doesn’t already have a specifically defined purpose.
+`<p>`	|	Paragraph of text.
+`<blockquote>` 	|	Contains an extended quotation, and renders as an indentation. You can also give a URL source by using  the `cite` attribute or text representation by using `<cite>`
+`<pre>`		|	Show text within exactly as represented, including things like code.
+`<hr>`	|	Represents thematic break between paragraph-level elements. This can be a scene change in a story, or shift of topic in a section.
+
+### Lists
+
+| |       
+|----|----|
+`<ol>`	|	Ordered Lists (eg. numbered lists) are contained within this element.
+`<ul>`	|	Unordered Lists (eg. bullet lists) are contained within this element.
+`<li>`	|	List items are individually contained with this element.
+
+### Glossaries, Metadata Content
+| |       
+|----|----|
+`<dl>`	|	Provides description list. Encloses a list of groups of terms (using the `<dt>` element) and descriptions `<dd>`. Common use is to implement a glossary or to display metadata.
+`<dt>`	|	Specifies a term in a description or definition list. Must be used inside of a `<dl>`
+`<dd>`	|	Provides description, definition or value for preceding term, inside of a `<dl>`
+
+### Figures
+| |       
+|----|----|
+`<figure>`	|	Represents self-contained content
+`<figcaption>`	|	Caption or legend describing its parent `<figure>`
+
+---
+## Inline Text Semantics
+These elements are used to wrap words or small sections of text to denote their role, appearance (and therefore relation to its context), and any interactive behaviors (like anchor links).
+
+I’ll get the most confusing one out of the way and then the rest of the inline text semantic elements.
+
+---
+### The mystical world of making text stand out (and also not)
+There are a number of elements used to mark things as important or to help text stand out. Gonna try to break that down here.
+
+| |       
+|----|----|
+`<strong>`	|	Indicates that the content has strong importance, seriousness, or urgency. Use to indicate that this text is more important than its surrounding text.
+> eg. **Important:** Leaving this page will destroy your changes.
+
+| |       
+|----|----|
+`<b>`  | Helps draw the reader’s attention to element’s contents, which are not otherwise granted special importance. Use for keywords in a summary, product names in a review, or other spans of text whose typical presentation would be boldfaced, but not of special importance.
+
+> eg. The **tables** and **chairs** are next for pickup. ||
+
+**If there is no semantic purpose to use either `<strong>` or `<b>`, and you are styling text for decorative purposes, use css font-weight: bold instead.**
+
+| |       
+|----|----|
+`<em>`	|	Stress emphasize contents. Similar to `<strong>` in that it puts verbal stress or indicates importance over nearby content. |
+
+> eg. There was *no way* we could let them get away with it.
+
+| |       
+|----|----|
+`<i>`	|	No added emphasis or importance on its contents, but visually denotes that the content is set off from the normal prose – this can be like foreign words, names of things, character thoughts, or when the text refers to the definition of a word instead of representing is semantic meaning.
+
+> eg. The *Kobayashi Maru* is a test designed to test the character of *Starfleet Academy cadets* in a no-win scenario.
+
+| |       
+|----|----|
+`<mark>`	|	Marked or highlighted text for reference or notation purposes. Used to denote a certain degree of relevance.
+
+**Don’t use `<mark>` to highlight the entire section, but rather, use a `<span>` with the appropriate css applied.**
+
+### Common Inline text elements
+| |       
+|----|----|
+`<a>`	|	Anchor (or hyperlink) to web pages, files, email addresses locations within the page, or anywhere a URL can access.
+`<abbr>`	|	Abbreviation element, representing an abbreviation or acronym. Which is funny because it’s a long-ass word and abbr is an abbreviation of itself. Hilarious.
+`<q>`	|	Contents are a quotation, and renders typically with quotation marks.
+`<s>`	|	Contents are rendered with strikethrough.
+`<sub>`	|	Subscript
+`<sup>`	|	Superscript
+`<small>`	|	Side-comments and small print, like copyright and legal text. By default it will render one size smaller, like small to x-small.
+`<span>`	|	Common generic enclosed inline text. Like `<div>` but while `<div>` is block-level, `<span>` is an inline element.
+
+### Other Inline Text Elements
+| |       
+|----|----|
+`<code>`	|	Displays contents styled (typically monospace) to represent computer code.
+`<data>`	|	Displays contents styled (typically monospace) to represent computer code.
+`<dfn>`	|	Indicates that the contained text is being currently defined within a sentence or phrase.  On a dictionary website, this would enclose the term being defined while being defined or used in a sentence.
+`<kbd>`	|	Keyboard Input element represents a span of inline text denoting textual user input from a keyboard, voice input, or any text entry device. <br> Please press <kbd>Ctrl</kbd> + <kbd>s</kbd> to save.
+`<samp>`	|	Contains text that represents output from a computer program, whether it be a sample or copied output.
+`<time>`	|	Represents a specific period in time.
+`<u>`	|	Contains a span of text that indicates it has a non-textual annotation, like red squiggles to denote misspellings.
+`<var>`	|	Contains name of a variable in a mathematical expression or programming context. By default it italicizes the text.
+`<wbr>`	|	Word Break Opportunity; a place where text can be broken to another line, when line-breaking rules would otherwise not create a break at that location.
+
+---
+### Helpful inline text elements for non-English languages.
+#### Text Direction
+| |       
+|----|----|
+`<bdi>`	|	Tells the browsers bidirectional algorithm to treat the element’s contents direction (left to right text or right to left text) in isolation to its context. This is useful when you don’t know what the direction of the text being embedded will be.
+`<bdo>`	|	Tells the browsers bidirectional algorithm to override the current direction of the text with the `dir=“ltr”` or `dir=“rtl”` attribute.
+
+#### Ruby Text
+*Ruby text* are small annotation texts (“glosses”) displayed alongside or above a Chinese, Japanese, or Korean kanji. It’s named after an old printer’s term for the very small size of 5.5pts. 
+
+| |       
+|----|----|
+`<ruby>`	|	This element is used to create a section of ruby enabled text.
+`<rbc>`	|	Ruby Base Container for `<rb>` and `<rt>` ruby annotations (Firefox Only)
+`<rb>`	|	The base text component that is being annotated.
+`<rt>`	|	The ruby text component, providing pronunciation, translation, or transliteration for an East Asian character. Must be contained within a `<ruby>` element.
+`<rp>`	|	Ruby fallback parenthesis is used to provide parenthesis for browsers that do not support ruby annotations.
+`<rtc>`	|	Ruby Text Container container for providing semantic annotation of characters in a `<ruby>` It’s like providing a ruby annotation for the whole dang thing and it’s very meta. (Firefox Only)
+
+This example only properly works on Firefox, but on other browsers should give a sense of what fallback looks like.
+
+<ruby xml:lang="zh-Hant" style="ruby-position: under;">
+<rbc>
+<rb>馬</rb><rp>(</rp><rt>mǎ</rt><rp>)</rp>
+<rb>來</rb><rp>(</rp><rt>lái</rt><rp>)</rp>
+<rb>西</rb><rp>(</rp><rt>xī</rt><rp>)</rp>
+ <rb>亞</rb><rp>(</rp><rt>yà</rt><rp>)</rp>
+</rbc>
+<rtc xml:lang="en" style="ruby-position: over;">
+<rp>(</rp><rt>Malaysia</rt><rp>)</rp>
+</rtc>
+</ruby>
+
+This example should work on all browsers (except Edge)
+
+<ruby>
+<rb>馬</rb><rp>(</rp><rt>mǎ</rt><rp>)</rp>
+</ruby>
+
+```
+<ruby xml:lang="zh-Hant" style="ruby-position: under;">
+	<rbc>
+		<rb>馬</rb><rp>(</rp><rt>mǎ</rt><rp>)</rp>
+		<rb>來</rb><rp>(</rp><rt>lái</rt><rp>)</rp>
+		<rb>西</rb><rp>(</rp><rt>xī</rt><rp>)</rp>
+		<rb>亞</rb><rp>(</rp><rt>yà</rt><rp>)</rp>
+	</rbc>
+	<rtc xml:lang="en" style="ruby-position: over;">
+		<rp>(</rp><rt>Malaysia</rt><rp>)</rp>
+	</rtc>
+</ruby>
+```
+
+<style type="text/css">
+td:nth-child(1) {
+  width: 120px;
+  text-align:center;
+}
+table {
+  width:100%;
+  margin-bottom: 20px;
+}
+th {
+  background:AliceBlue;
+}
+</style>

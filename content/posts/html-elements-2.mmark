@@ -1,0 +1,168 @@
+---
+title: "Html Elements Part II"
+date: 2019-10-22T13:43:09-05:00
+draft: false
+---
+
+Part two of two on "all" of the html elements (that are not obsolete).
+
+## Images & Multimedia
+
+| |       
+|----|----|
+`<img>`		|	Used to embed images. Replaces the ancient `<image>` element. `<img>` so 2008, you so two-thousand-and-LATE.
+
+| |       
+|----|----|
+`<map>`		|	Used to create an image map (which is an area that is clickable, and might have multiple clickable spots, like a map, or an image that has clickable areas).
+`<area>`	|	Used to define those “hot-spot” areas on a `<map>`  and associates them with a `href` attribute. Has a set of `coords` and a shape like a `rect`, `circle` or `poly` (polygon) which has a set of x,y pairs.
+
+| |       
+|----|----|
+`<audio>`	|	Embed audio sources. Can contain one or more sources, via the `src` attribute, or the `<source>` element. It can also be the destination for streamed media, using `MediaStream` which is a web technology API.
+`<video>`		|	Embed video sources.  Can provide multiple source files in different types, which can be used as browser fallback. <br>eg. `<source src=“/flower.webm” type=video/webm”>`
+`<track>`		|	Child of `<audio>` or `<video>` and can provide specified text time tracks (like subtitles, captions, descriptions, chapters, or metadata (not visible)). <br>For audio, tracks are formatted in WebVTT (.vtt) and for video in Timed Text Markup Language (TTML).
+
+## Embedded Content
+Of course there are three main competing ways to embed content and confusion around them so here’s an “ugh nuance” warning.
+
+<div class="c-funky-text__container">
+	<span class="c-funky-text">Ugh, Nuance...</span>
+</div>
+
+<div class="o-centered">
+  <small>(Yes, I embedded an entire font just to make this nuance div k don't hate)</small>
+</div>
+
+`<iframe>` elements are made to embed other webpages, but the `<embed>` and `<object>` are similar in that they allow you to embed PDF’s, SVG, and also Flash. However, you’re unlikely to use embed and object for the reason that there are better, more specific elements like `<canvas>` and `<video>`. Flash is no longer used in most cases, and PDF’s are better suited as a link, rather than embedded.
+
+*Security note:* One more thing about `<iframe>` is that it’s good to almost always include the `sandbox` attribute to it to make sure that it can only have permissions to show what is in the frame, and then re-add any permissions as needed, like `allow-scripts` and `allow-same-origin` but never both.
+
+| |       
+|----|----|
+`<iframe>`	|	Inline Frame. Allows you to nest HTML into another HTML document.
+`<embed>`	|	Embeds external content at specified point in document. Content is provided by an external application or other source of interactive content like browser plug-ins.
+`<object>`	|	Represents external resources, like pdfs, images, nested browsing context, or resources to be handled by a plugin.
+`<param>`	|	Child of an `<object>`, this element provides key-value pair parameters to its parent, for example, setting `allowfullscreen`  to `true`. Often used to pass parameters to plugins.
+`<picture>`	|	Container for `<source>` elements and one `<img>` element to provide version of an image for different display/device scenarios.
+`<source>`	|	Specifies multiple media sources for `<picture>`, `<audio>` or `<video>`.
+
+## Scripting
+These can be seen in the wild on web-based gaming platforms, custom interactive systems that go beyond `<form>` capabilities, and also sites that use webgl rendering like shadertoy or p5js.
+
+| |       
+|----|----|
+`<canvas>`	|	Used to create an area where canvas scripting or WebGL graphics and animations can be shown.
+`<noscript>`	|	Defines a section of HTML to show when a script type is unsupported or if scripting is currently turned off in a browser.
+`<script>`		|	Embed or reference executable code, like JavaScript.
+
+## Tracking Changes / Demarcating Edits
+These elements allow you to denote when things are added or removed, like how github shows tracked changes.
+
+| |       
+|----|----|
+`<del>`	|	Represents a range of text that’s been deleted.
+`<ins>`	|	Represents a range of text that’s been inserted.
+
+## Tables, yo.
+
+| |       
+|----|----|
+`<table>`	|	Make the table.
+`<thead>`	|	A set of rows defining the head of the columns of the table.
+`<th>`		|	Defines a cell as a header of a group of table cells. Can be defined further with `scope` and `headers` attributes.
+`<tbody>`	|	Contains a set of `<tr>` elements, indicating they compromise the body of the table.
+`<tfoot>`	|	Defines a set of rows summarizing the columns of the table.
+`<caption>`	|	Specifies the caption (or title) of a table. If used, it is always the first child of a table.
+
+| |       
+|----|----|
+`<colgroup>` |	Defines a group of columns.
+`<col>`		|	Column element
+`<td>`		|	Table cell, containing data.
+`<tr>`		|	Table row, containing `<th>` and `<td>` cells.
+
+## Forms
+### Form Structure
+
+| |       
+|----|----|
+`<form>`	|	Represents interactive content that can submit information to a web server.
+`<fieldset>`	|	Groups several controls and labels together.
+`<output>`	|	A container that a site/app can inject results (calculations or outcomes) from a user interaction.
+
+### Form Labels and Hints
+
+| |       
+|----|----|
+`<label>`	|	Caption for an item in a form.
+`<legend>`	|	Caption for the content of its parent `<fieldset>`
+`<meter>`	|	Is a scalar value within a known range or fractional value.
+`<progress>`	|	A visual progress bar or something to indicate progress.
+	
+### Form Interactive Elements
+
+| |       
+|----|----|
+`<input>`	|	Wide range of interactive elements to accept user data within a form.
+`<textarea>`	|	Creates a field that provides multi-line plain-text editing control.
+`<select>`	|	Creates a control that provides a menu of options.
+
+| |       
+|----|----|
+`<datalist>`	|	Used to contain a list of `<option>`’s that are values available for other controls.
+`<optgroup>`	|	Creates a group of `<option>`’s within a `<select>` dropdown.
+`<option>`	|	An item within a `<select>` menu, `<optgroup>`, or also `<datalist>` element.
+
+## Interactive Elements (experimental)
+
+| |       
+|----|----|
+Not supported in IE or Edge. ||
+`<details>`	|	Creates a disclosure widget in which information is visible when the widget is toggled to an `open` state. 
+`<summary>`	|	Sits inside a `<details>` and provides the displayed text that can be `open`ed. 
+
+<details>
+	<summary>This is where `summary` displays</summary>
+	This is the hidden detail related to the summary.
+</details>
+
+
+```
+<details>
+	<summary>This is where `summary` displays</summary>
+	This is the hidden detail related to the summary.
+</details>
+```
+
+
+| |       
+|----|----|
+`<dialog>`	|	A dialog box or other interactive component like an inspector or window. _Not supported by Edge, IE, or Safari, and must be enabled by users on Firefox._
+`<menu>`	|	Can be used to create a modified context menu (right click) , but better to use JS if you really need to do that. Not supported in most browsers.
+`<menuitem>`	|	Items in the `<menu>`
+
+
+## Web Components
+Allows you to create custom elements, and custom versions of standard HTML elements. Not supported in Edge or IE yet but apparently they are working on their own implementations. Note: `<content>`, `<element>` and `<shadow>` were omitted as they are now obsolete and replaced by the following two.
+
+By creating a template, you can reuse the same markup structures repeatedly on a web page. These elements are not rendered in the DOM but can be referenced using JS.
+
+| |       
+|----|----|
+`<template>`	|	Mechanism for holding HTML that is not to be rendered immediately when a page is loaded, but can be instantiated subsequently during runtime, with JS.
+`<slot>`	|	Placeholder in a web component that you can fill with your own markup, allowing you to create separate DOM trees and present them together.
+
+<style type="text/css">
+td:nth-child(1) {
+  width: 120px;
+  text-align:center;
+}
+table {
+  width:100%;
+  margin-bottom: 20px;
+}
+th {
+  background:AliceBlue;
+}
+</style>

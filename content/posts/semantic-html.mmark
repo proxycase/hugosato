@@ -1,0 +1,94 @@
+---
+title: "Semantic Html"
+date: 2019-10-24T11:21:44-05:00
+draft: false
+---
+
+## Why write semantic HTML?
+There is a lot of confusing code out there in the world today. It’s not limited to HTML or CSS, but perhaps because these “languages” are so prolific, somewhat easy to learn, and because everyone has their own “style,” 
+
+I know that at least for me there wasn’t a lot of incentive to think too hard about doing everything properly as long as it worked.
+
+When I started, I used generic divs for everything, and sections to hold those divs, and relied on classes for pretty much any sort of styling. I only knew what I knew based on need. But HTML5 changes that in a lot of ways, by providing more specific elements like `<audio>` and `<video>` or `<aside>` to get closer to the appropriate meanings and functions those type of elements need, depending on device type and size.
+
+### Communication is for humans and robots alike
+It’s ultimately about communicating correctly and succinctly to the computer, and to other humans who might be working on the same codebase as you.
+
+For example, you don’t need to write footers like this: `<div id=“footer”>` when you have the ability to just use `<footer>`, because it’s easier to understand, less visual clutter, and more succinct.
+
+Search engines, browsers, and other software algorithms looking at your website can more easily pull out the important details too, meaning it’s better for your SEO, delivering content to people the way they want to see it, including translations to another language, or better screen reader compatibility.
+
+> “Semantic HTML enhances accessibility, searchability, internationalization, and interoperability.”
+> – Bruce Lawson
+
+### Separate content from style
+Finally, HTML is markup, and we should avoid the temptation to style things using html hacks to get custom results, and rely on CSS and JS to do the job they do best. Separate those concerns!
+
+---
+## What does semantic HTML mean exactly?
+Well semantics means that you use the right words for their appropriate meanings. In practice, it means using the right tools for the right job, but also being aware of opportunities to make elements more specific.
+
+Unfortunately, not all of the new semantic details found in HTML5 are fully adapted yet into every browser, but there are some main ones that should now be used when possible.
+
+### Don’t use HTML tags solely for their default visual properties
+Just because `<b>` and `<strong>` help bold a text, it’s important to use them for their intended (and redefined) meanings. `<b>` is now only used to make things bold that aren’t of extra importance or emphasis, while `<strong>` denotes strong emphasis. But if it’s a header, then use an `h1 - h6` tag, and if you need to style an entire section, then use a class and change the font-weight in css.
+
+### Refactoring the `<div>`
+First thing to do is to consider the overall function of the div. Some are more obvious than others, like using `<main>` to denote the main content of a page. Other things like applying `<article>` and `<section>` were less obvious to me, and also the fact that there can be multiple `<footer>` elements for each of these if they have content like authors, copyright info, and other related data.
+
+### `<div>` vs `<section>` vs `<article>`
+This can get a little confusing but these are semantically all different in their usage.
+
+`<div>`		|	Generic container for flow content.
+`<section>`	 |	Generic container for a standalone section.
+`<article>`	|	Container in a document/page/application/site intended to be independently distributable or reusable.
+
+The first two main differences between `<section>` and `<article>` are that the articles are self-contained, and can be placed in another context (say for instance a bookmarking tool like Pocket or Flipboard), and still make sense. The content within them is typically something like a blog post (aka article) and therefore can stand alone. 
+
+For section elements, these do not have to make sense outside of this context, and can simply represent an area (typically full-width) that contains relevant content. Keep in mind that section is only used if there isn’t a more semantically relevant element available, like `<nav>` or `<header>`.
+
+So after these two elements, along with other content sectioning elements like `<header>`, `<main>`, and even `<dl>` (description lists), `<div>`’s can generally handle much smaller areas of content, when there isn’t a more semantically relevant element available. 
+
+#### Here are some other elements that can replace generic divs:
+
+| | |
+| ---- | ----|
+`<address>` | Encloses contact information
+`<aside>` | Encloses content indirectly related to document’s main content.
+`<main>` | Represents the main content area of the `<body>` of the document. Contains content that is directly related to or expands upon the central topic of a document.
+`<nav>`	 | Contains the section that provides navigation links either within or outside of the current document. Commonly, these are menus, tables of content, and indexes.
+
+| | |
+| ---- | ---- |
+`<header>` | Contains introductory information or navigational aids. Can also contain a logo, search form, authors, etc.
+`<footer>` | Contains footer for its nearest sectioning content or sectioning root element. Can contain the author for the section, copyright data, or links related to the section. Note: not only used for the footer of an entire website, but can be used for bottoms of blog post lists, and more.
+`<hgroup>` | Groups a set of h1-h6 tags
+
+---
+### And the rest?
+Of course, divs are not the only thing that can be refactored to more verbose, semantically accurate elements. For example, span elements fall into the same category of generic content containers, but can be replaced by more specific inline elements like `<code>` for code, `<samp>` for quoted computer output,`<q>` for quotations, and others.
+
+I already broke down the differences in semantic uses between `<strong>` and `<b>`, `<em>` and `<i>` in my HTML Elements Part I, but that’s a particularly specific and nuanced concept to grasp as well.
+
+Overall, semantic HTML makes crafting the framework for your website easier to read, and therefore easier to write, and maintain. Next up, I’ll write about ITCSS and BEM naming, to further create clear, crafted, and semantic front-end building.
+
+---
+#### Additional Resources
+
+[Semantic Markup - Html.com](https://html.com/semantic-markup/)
+
+[Semantic HTML - Interneting is Hard](https://internetingishard.com/html-and-css/semantic-html/)
+
+<style type="text/css">
+td:nth-child(1) {
+  width: 120px;
+  text-align:center;
+}
+table {
+  width:100%;
+  margin-bottom: 20px;
+}
+th {
+  background:AliceBlue;
+}
+</style>

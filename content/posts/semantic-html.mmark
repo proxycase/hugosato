@@ -9,10 +9,10 @@ There is a lot of confusing code out there in the world today. It’s not limite
 
 I know that at least for me there wasn’t a lot of incentive to think too hard about doing everything properly as long as it worked.
 
-When I started, I used generic divs for everything, and sections to hold those divs, and relied on classes for pretty much any sort of styling. I only knew what I knew based on need. But HTML5 changes that in a lot of ways, by providing more specific elements like `<audio>` and `<video>` or `<aside>` to get closer to the appropriate meanings and functions those type of elements need, depending on device type and size.
+When I first started writing html websites, I used generic divs for everything, and divs to hold those divs, and relied on classes for pretty much any sort of styling. HTML5 changes that in a lot of ways by providing more *semantic* and *specific* elements like `<audio>`, `<video>` and `<disco>` *(just kidding but see footnote)* to represent the appropriate names for what is contained within. This affects how different devices handle media, and also affects how accessibility readers navigate your website or application.
 
 ### Communication is for humans and robots alike
-It’s ultimately about communicating correctly and succinctly to the computer, and to other humans who might be working on the same codebase as you.
+It’s ultimately about communicating correctly and succinctly to the computer and to other humans. When collaborating with others, good structure and naming will also go a long way to make sure you're all on the same page, so you can spend less time on figuring out content structuring names, and more on the stuff that matters like the UX and functionality of the page.
 
 For example, you don’t need to write footers like this: `<div id=“footer”>` when you have the ability to just use `<footer>`, because it’s easier to understand, less visual clutter, and more succinct.
 
@@ -78,6 +78,10 @@ Overall, semantic HTML makes crafting the framework for your website easier to r
 [Semantic Markup - Html.com](https://html.com/semantic-markup/)
 
 [Semantic HTML - Interneting is Hard](https://internetingishard.com/html-and-css/semantic-html/)
+
+---
+#### Footnote
+_Did you know "audio, video, disco" mean "I hear, I see, I learn" in latin? Shoutout to the band Justice for teaching me that._
 
 <style type="text/css">
 td:nth-child(1) {

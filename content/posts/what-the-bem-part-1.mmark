@@ -4,7 +4,7 @@ date: 2019-10-25T11:57:22-05:00
 draft: false
 ---
 
-The BEM naming convention methodology is designed to reduce complexity, and increase legibility, and discoverability. By looking at a CSS class written in BEM, you should get a sense of:
+The BEM naming convention methodology is designed to reduce complexity, increase legibility, and discoverability. By looking at a CSS class written in BEM, you should get a sense of:
 
 1. Knowing what that selector might do
 2. To have an idea of where it might be used

@@ -11,7 +11,7 @@ The BEM naming convention methodology is designed to reduce complexity, increase
 3. Knowing the relationship between the class names
 
 > “CSS is not a pretty language. While it is simple to learn and get started with, it soon becomes problematic at any reasonable scale. There isn’t much we can do to change how CSS works, but we can make changes to the way we author and structure it.”
-> - cssguidelines
+> –cssguidelines
 
 Here’s what BEM looks like:
 
@@ -19,7 +19,7 @@ Here’s what BEM looks like:
 
 or in real-life...
 
-```
+```css
 .btn {}
 .btn--red {}
 .btn__icon {}
@@ -29,7 +29,7 @@ or in real-life...
 
 Write this in sass and you have:
 
-```
+```scss
 .btn {
 	&--red {}			// non-icon red button
 	&__icon {
@@ -48,7 +48,7 @@ Write this in sass and you have:
 * Modifier classes are generally be used along with their base. For example: `class="btn btn--tall"`
 * Using BEM is a departure from using IDs, which have too much override power by an order of magnitude. Use IDs only for functionality and 
 * Avoid high specificity. BEM also departs from using css selectors, like `.block > ul` in the css. Instead, use the `block block--modifier pattern`
-* Avoid multi-word names if possible and hyphenate them. It's a general rule in CSS to hyphenate 
+* Avoid multi-word names if possible and hyphenate them. It's a general rule in CSS to hyphenate multi-words instead of camelCase as it mirrors attribute names and increases legibility.
 
 The block by itself gets a shared style, but can be paired with just a modifier, or just an element. The modifier and element do not exist without the block, unless perhaps you’re further down the tree and the element is now a block in that context. 
 
@@ -56,7 +56,7 @@ However, more than likely in that case, you should consider that the block high 
 
 Check out this (incorrect) example:
 
-```
+```html
 <section class="articles">
 	<h1>Articles</h1>
 	<article class="articles__item">
@@ -76,7 +76,7 @@ Check out this (incorrect) example:
 
 It's against BEM rules to chain modifiers and elements as you see above, for obvious reasons – it gets way too long and unwieldy. First, see if you can simplify and remove any extra html elements (sometimes you don't need to use elements just because they are available), or do the following:
 
-```
+```html
 <section class="articles">
 	<h1>Articles</h1>
 	<article class="article">

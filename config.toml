@@ -57,3 +57,7 @@ url = "https://www.instagram.com/abalonespider/"
 # Enable tags.
 [taxonomies]
    tag = "tags"
+
+# Enable highlighted code fences
+pygmentsCodeFences = "true"
+pygmentsStyle = "tango"

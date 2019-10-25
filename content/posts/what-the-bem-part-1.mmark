@@ -1,0 +1,117 @@
+---
+title: "What the Bem - Part I"
+date: 2019-10-25T11:57:22-05:00
+draft: false
+---
+
+The BEM naming convention methodology is designed to reduce complexity, and increase legibility, and discoverability. By looking at a CSS class written in BEM, you should get a sense of:
+
+1. Knowing what that selector might do
+2. To have an idea of where it might be used
+3. Knowing the relationship between the class names
+
+> “CSS is not a pretty language. While it is simple to learn and get started with, it soon becomes problematic at any reasonable scale. There isn’t much we can do to change how CSS works, but we can make changes to the way we author and structure it.”
+> - cssguidelines
+
+Here’s what BEM looks like:
+
+`.block__element--modifier`
+
+or in real-life...
+
+```
+.btn {}
+.btn--red {}
+.btn__icon {}
+.btn__icon--dark {}
+.btn__icon--light {}
+```
+
+Write this in sass and you have:
+
+```
+.btn {
+	&--red {}			// non-icon red button
+	&__icon {
+						// default icon button style
+		&--dark {}		// dark modifier style
+		&--light {}		// light modifier style
+	}
+}
+```
+
+### So things to note:
+
+* The Block is the root component.
+* The Element is a specific component of that root.
+* The Modifier is a variant or extension of the block.
+* Modifier classes are generally be used along with their base. For example: `class="btn btn--tall"`
+* Using BEM is a departure from using IDs, which have too much override power by an order of magnitude. Use IDs only for functionality and 
+* Avoid high specificity. BEM also departs from using css selectors, like `.block > ul` in the css. Instead, use the `block block--modifier pattern`
+* Avoid multi-word names if possible and hyphenate them. It's a general rule in CSS to hyphenate 
+
+The block by itself gets a shared style, but can be paired with just a modifier, or just an element. The modifier and element do not exist without the block, unless perhaps you’re further down the tree and the element is now a block in that context. 
+
+However, more than likely in that case, you should consider that the block high up in the tree should actually be called something else (aka container) so that the items within have their own block. 
+
+Check out this (incorrect) example:
+
+```
+<section class="articles">
+	<h1>Articles</h1>
+	<article class="articles__item">
+		<hgroup class="articles__item--heading">
+			<h2>BEM Naming</h2>
+			<h3>Making readable CSS in 2019</h3>
+		</hgroup>
+		<figure class="articles__item--figure">
+			<img src="article-image.png" class="articles__item__figure--img">
+			<figcaption class="articles__item__figure--caption>Picture of an angry kitten</figcaption>
+		</figure>
+		<p class="article__content">Lorem ipsum dolor imet...</p>
+	</article>
+	<!-- ... more articles below -->
+</section
+```
+
+It's against BEM rules to chain modifiers and elements as you see above, for obvious reasons – it gets way too long and unwieldy. First, see if you can simplify and remove any extra html elements (sometimes you don't need to use elements just because they are available), or do the following:
+
+```
+<section class="articles">
+	<h1>Articles</h1>
+	<article class="article">
+		<hgroup class="article__headings">
+			<h2>BEM Naming</h2>
+			<h3>Making readable CSS in 2019</h3>
+		</hgroup>
+		<figure class="article-figure">
+			<img src="article-image.png" class="article-figure__img">
+			<figcaption class="article-figure__caption">Picture of an angry kitten</figcaption>
+		</figure>
+		<p class="article__content">Lorem ipsum dolor imet...</p>
+	</article>
+	<!-- ... more articles below -->
+</section
+```
+
+First, I separated the `articles` base from the `article` to remove a single layer of potential nesting problems. Plus it's a bit more semantic.
+
+For the `figure`, it's tempting to think about it as a child of the article, but once you get to the `img` or `caption`, you run into problems.
+
+Do I name it `article__figure--img` and `article__figure--caption`? Well, the problem is that `<img>` and `<caption>` are not modifiers of the `<figure>`, but are elements of that region.
+
+By deciding to make `article-figure` a standalone base, you can declare the img and caption as elements. This means you maintain modularity, because these items are now independent of their parent containers, and it simplifies the language.
+
+`article-figure__img` and `article-figure__caption`
+
+### Modularizing Further & Staying Flat
+Depending on the situation, there might be a more elegant way to do this as well, and depending on where this figure-img-caption might reappear on your website/application, it may be more concise to detach it from the article for reusability, by simply using:
+
+`figure`, `figure__img` and `figure__caption`
+
+---
+More examples of things like this can be found at: [BEM by Example: Best Practices for BEM CSS Naming](https://seesparkbox.com/foundry/bem_by_example)
+[BEM Simple Naming Convention For CSS Classes - tajawal - Medium](https://medium.com/tech-tajawal/bem-simple-naming-convention-for-css-classes-9660438d04a2)
+
+---
+Part two will dive deeper into a specific example regarding a webpage developed as part of an earlier design project, Bork co.

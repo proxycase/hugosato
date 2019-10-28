@@ -5,7 +5,7 @@ draft: false
 ---
 
 ### The Block
-For this post, we'll be looking at the following example pulled from one of my recent projects.
+For a moment, we'll be looking at the following example pulled from one of my recent projects.
 
 ![Bork Section Example](/img/bork-example-1.png)
 
@@ -43,10 +43,10 @@ First, I want to call the section something. As it’s something of a feature of
 
 ```html
   <section class=“feature”>
-    <div class=“feature__header”>
+    <header class=“feature__header”>
       <h2>What’s great about staying with us?</h2>
       Still on the fence? Bork gets your breeds needs!
-    </div>
+    </header>
 
     <ul class=“feature__list”>
 		[...]

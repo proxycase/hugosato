@@ -46,7 +46,7 @@ Write this in sass and you have:
 * The Element is a specific component of that root.
 * The Modifier is a variant or extension of the block.
 * Modifier classes are generally be used along with their base. For example: `class="btn btn--tall"`
-* Using BEM is a departure from using IDs, which have too much override power by an order of magnitude. Use IDs only for functionality and 
+* Using BEM is a departure from using IDs, which have too much override power by an order of magnitude. Use IDs only for function-related hooks, like javascript, or forms, but never for style.
 * Avoid high specificity. BEM also departs from using css selectors, like `.block > ul` in the css. Instead, use the `block block--modifier pattern`
 * Avoid multi-word names if possible and hyphenate them. It's a general rule in CSS to hyphenate multi-words instead of camelCase as it mirrors attribute names and increases legibility.
 

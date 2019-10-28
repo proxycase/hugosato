@@ -1,6 +1,145 @@
 ---
-title: "What the Bem Part 2"
+title: "What the Bem – Part 2"
 date: 2019-10-25T12:05:04-05:00
-draft: true
+draft: false
 ---
 
+### The Block
+For this post, we'll be looking at the following example pulled from one of my recent projects.
+
+![Bork Section Example](/img/bork-example-1.png)
+
+#### Thinking out loud
+This is a `<section>` on my homepage, describing features in a 3 column setup. This could be either a grid/flexbox situation, where each flow directly on top of each other at a certain media size, or instead of taking too much vertical space, fold into a carousel – but carousels aren't great for accessibility or conversion.
+
+The `<header>` of this section contains a single `h2` and a sub-heading, which are in a centered block. It looks something like this:
+
+```html
+<section>
+    <header>
+      <h2>What's great about staying with us?</h2>
+      <p>Still on the fence? Bork gets your breeds needs!</p>
+    </header>
+
+    <ul>
+      <li>
+        <figure>
+          <img src="picture.jpg" alt="Dog in backseat of car">
+        </figure>
+        <h3>It's convenient</h3>
+        <p>Whether you drop off your pet, or use our pick-up service, we're available when you need it.</p>
+        <a href="somewhere.html">
+          Our Hours
+        </a>
+      </li>
+      {{/*  more li's here ...  */}}
+    </ul>
+</section>
+```
+
+Because all items are the same style, I’ll just focus on the one and make BEM-style classes for just this snippet of HTML.
+
+First, I want to call the section something. As it’s something of a feature of the business, I’ll call it a `feature__container` with a `feature__header` and a `feature__list`.
+
+```html
+  <section class=“feature”>
+    <div class=“feature__header”>
+      <h2>What’s great about staying with us?</h2>
+      Still on the fence? Bork gets your breeds needs!
+    </div>
+
+    <ul class=“feature__list”>
+		[...]
+```
+
+In terms of a modifier, there’s another section on this website that uses the same pattern, but instead has two columns instead of three. So each individual item should be responsive to the column system they fit inside.
+
+### Elements & dealing with the super-nest™
+HTML can get really nested. While I’ll write a separate article about un-nesting CSS later, it’s good to avoid nesting css if at all possible for creating modular, adaptable components, which can keep things DRY (Don’t repeat yourself!).
+
+The following example was found via [CSS BEM Naming Convention](https://codeburst.io/understanding-css-bem-naming-convention-a8cca116d252)
+```html
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a>Some link</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+```
+
+In this case, since it’s against BEM rules to chain elements like `block__element__element`, then their suggestion here is to use the `header` as your container, and `nav` as your block root, with its children being elements of `.navigation`.
+
+```css
+.container { }
+.navigation {
+
+  &__menu { }
+	&__item { }
+	&__link { }
+}
+```
+
+*Note:* in sass, the & symbol attaches its parent to the name of the item. So `&__menu` computes into `.navigation__menu`
+
+The HTML structure then becomes:
+```html
+<header class=“container”>
+	<nav class=“navigation”>
+		<ul class=“navigation__menu”>
+      	<li class=“navigation__item”>
+        		<a class=“navigation__link”>Some link</a>
+      	</li>
+		</ul>
+	</nav>
+</header>
+```
+
+In this way, we don't nest or chain the CSS names, but rather name the elements for what purpose they serve.
+
+### Modifiers
+Modifiers can modify either the block or the block element, meaning they can exist in two forms:
+
+```css
+.block__element--modifier
+.block--modifier
+```
+
+They are typically added as a secondary (override) class along with the base block or block__element, like so:
+
+```html
+<section class="vanguard vanguard--blue">
+	<!-- content here -->
+</section>
+```
+
+This allows you to keep things DRY, as you don't need to repeat any styles applied to the base class, in your modifier class. Your modifier class only contains what is modified.
+
+```css
+.vanguard {
+	background: rgb(15, 200, 200);
+	content-align: center;
+	padding: 0 auto;
+}
+
+.vanguard--blue {
+	background: AliceBlue;
+}
+```
+
+### Commenting
+Lastly, providing some short and succinct documentation on the css class declaration can help provide direction in terms of what that class affects.  Add a quick comment before the base class css definition so that you in the future (and potentially others) can quickly scan a CSS document to figure out how things are styled, and how to make quick adjustments as necessary.
+
+```css
+// Affects sections outside of main on homepage
+.feature {
+	display:flex;
+	max-width: 30rem;
+}
+
+.feature__header {
+	line-height: 2em;
+}
+```

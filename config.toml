@@ -60,4 +60,4 @@ url = "https://www.instagram.com/abalonespider/"
 
 # Enable highlighted code fences
 pygmentsCodeFences = "true"
-pygmentsStyle = "tango"
+pygmentsStyle = "vs"

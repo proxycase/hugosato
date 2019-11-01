@@ -291,11 +291,11 @@ I'd rather just be able to dive to the exact selector and then find what styles 
 
 Here's a more friendly diagram to look at how I'm thinking it through.
 
-[image:18F7FA72-1E80-402F-93F1-7A2D94A7471C-2458-0000A45BF07162FF/1-selector.png]
+![Selectors Diagram](/img/1-selector.png)
 
 Then to consider that in BEM, you use the modifier along with the base element, you can think of it as a sort of override class, like so:
 
-[image:2ECC5E37-5BA9-48D9-8F04-45A7A63EEF5E-2458-0000A45BF1C1D6A8/2-selector--modifier.png]
+![Selectors Diagram with BEM](/img/2-selector--modifier.png)
 
 What is nice about the BEM method is that it's easy to see what is actually a modification on a base style in the HTML, so if you know that there's something supposed to be special or unique to that version of a button, form element, that is indicated at the HTML level.
 

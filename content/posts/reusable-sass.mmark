@@ -1,0 +1,383 @@
+---
+title: "Reusable Sass"
+date: 2019-11-01T11:49:28-05:00
+draft: false
+---
+
+# Sassy refactor: making reusable sass components
+We looked at semantic names and roles of HTML elements, and creating better naming conventions to better visualize the relationship of css classes to their HTML elements using BEM. Now, we dive into refactoring the CSS/Sass world, in order to create better structure and maintainability.
+
+This week, I dove into refactoring different elements of my doggy daycare example project website. For this, I look closer at how to organize my stylistic choices, separate them from layouts, typography, tokens, and look at how sass deals with mixins, placeholder selectors, and more advanced sass concepts. How do we break down this giant boat of style and layout into individually addressable, modular parts, so we can modify and maintain our projects more quickly, and make collaboration easier?
+
+There are a lot of things to pay attention to, and many concepts are a bit more of a style-choice than a hard-set rule, which make researching this stuff really difficult because everyone seems to have a slightly different take. So the general idea seems to be: **As long as you have some system that is deliberate, consistent, and increases maintainability by you or other coders, you're headed in the right direction.**
+
+I ended up studying a variety of these styles in order to understand their benefits and pitfalls, and to also figure out what kinds of problems these frameworks were made to solve.
+
+**Lets steer the ship towards these things:**
+
+- Mixes – combining classes in the html
+- Namespacing CSS for clarity
+- Structuring styles in scalable, modular frameworks
+- Modular programming and keeping it DRY
+	- Using variables
+	- Using mixins and placeholder selectors
+* Separation of concerns
+* Performant CSS
+
+## The Basics: Mixes
+- Mixes are common practice, which is mixing css classes together on a single HTML element to combine, override, or modify existing styles. In practice, it looks like this:
+
+```html
+<div class="menu menu_theme_islands">...</div>
+```
+```css
+.menu { 
+	display: flex;
+	flex-direction: column;
+	padding: 2em; 
+}
+.menu_theme_islands {
+	background: rgb(220, 110, 12);
+	color: green;
+}
+```
+[Example from: Naming convention / Methodology / BEM](https://en.bem.info/methodology/naming-convention/)
+
+We "mix" the styles from different blocks to create a new, contextually different menu. Also note that in this case, I'm only extending the `.menu` class with layout choices, and `.menu_theme_islands` contains style (or "skin") choices. By doing this, I'm separating the concerns of each class, which is a principle found in OOCSS (Object Oriented CSS), which is to separate the `structure` from the `skin`. 
+
+### Take a look at the following principles from OOCSS:
+
+> **Separate structure and skin**: You should keep the structure and positioning in a base object and the visual features (like background or border) in extender clases. This way you'd never have to overwrite visual properties.
+
+> **Separate container and content**: Never mimic the structure of your HTML in CSS. In other words, don't refer to tags or IDs in your stylesheets. Instead, try to create and apply classes that describe the use of the tag in question. And keep nested classes to a bare minimum.
+
+> –– Nicole Sullivan
+
+Now, let's say a few months from now, the client returns with some ideas about how to "spruce" up the design to match some rebranding effort. By looking at the style names, it's not immediately clear which elements deal with layout, and which deal with type, or color. Well, thankfully we can help prevent future confusion, with a little namespacing.
+
+## Namespacing
+Namespacing means using class name prefixes that allow you to quickly identify where a class might live in your files, what role it plays in styling your HTML elements, and what kind of reach, or how many elements it affects.
+
+You may see something like:
+```css
+.c-feature {}
+.l-feature__description {}
+.is-active {}
+.u-offset-shadow {}
+```
+
+Namespacing really shines when used in combination with a css file structure, like ITCSS. These are organization methods that are designed so that you can create scalable, and modular CSS. 
+
+* **o-**: Signify that something is an Object, and that it may be used in any number of unrelated contexts to the one you can currently see it in. Making modifications to these types of class could potentially have knock-on effects in a lot of other unrelated places. Tread carefully.
+* **c-**: Signify that something is a Component. This is a concrete, implementation-specific piece of UI. All of the changes you make to its styles should be detectable in the context you’re currently looking at. Modifying these styles should be safe and have no side effects.
+* **u-**: Signify that this class is a Utility class. It has a very specific role (often providing only one declaration) and should not be bound onto or changed. It can be reused and is not tied to any specific piece of UI. You will probably recognise this namespace from libraries and methodologies like  [SUIT](https://suitcss.github.io/) .
+* And more:  **t-, s- is-, has- _ js-  qa-**  at: [More Transparent UI Code with Namespaces – CSS Wizardry – CSS Architecture, Web Performance Optimisation, and more, by Harry Roberts](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/)
+
+Here are a couple of the most popular systems, and how some of them are organized or structured below.
+
+* Object Oriented CSS - OOCSS
+* Scalable and Modular Architecture for CSS - SMACSS
+* Inverted Triangle CSS - ITCSS
+* Reasonable System for CSS - RSCSS
+* BEM
+
+| | | |
+| ---- | ---- | ---- |
+| **SMACSS**	| **ITCSS**		| **OOCSS** |
+| Base			| Settings		| Layout |
+| Layout l-		| Tools			| Skin
+| Module		| Generic		| Containers |
+| State, is- has-	| Objects, o-		| Components |
+| Theme			| Components, c-	| |
+|				| Utilities			|
+
+### RSCSS vs BEM
+Note that rscss and BEM are really not frameworks for css file organization as much as the others, and are philosophies for naming conventions, and how classes interact with each other.
+
+**RSCSS** deals with classes and their related elements by using child selectors, while limiting nesting to only one level deep.
+
+```css
+.search-form {
+	position: relative;
+
+	> .field {
+		font-size: 1.2em;
+		line-height: 1.75em;
+	}
+
+	> .button {
+		font-size: 1.6em;
+		line-height: 2em;
+	}
+}
+```
+
+HTML:
+```html
+<input class="search-form button">
+```
+More detail on rscss [here](https://rscss.io/elements.html)
+
+**BEM** deals with classes by separating each element to its own class, but by using the ampersand in sass/less, it can create a similar structure with more specific names.
+
+```css
+.search-form {
+	position: relative;
+
+	&__field {
+		font-size: 1.2em;
+		line-height: 1.75em;
+	}
+	
+	&__button {
+		font-size: 1.6em;
+		line-height: 2em;
+	}
+}
+```
+
+HTML:
+```html
+<input class="search-form__button">
+```
+
+
+## Fighting the nest
+Back when I first started writing any css code, I would be editing some existing theme, applied to a Xanga or Blogger CMS, which in hindsight, taught me a lot about web styling, but didn't teach me good practices. I would daisy-chain css styles in order to get the specific item looking the way I wanted, and more than often, would apply inline styles. **The natural instinct was to nest css, to mirror the structure of the html.**
+
+```html
+<div class="header">
+	<div class="navigation">
+		<div class="buttons-container">
+			<ul class="button-list">
+				<li class="button">
+					...
+```
+
+```css
+header {
+	navigation {
+		buttons-container {
+			button-list {
+				li {
+					...
+```
+
+There are some obvious problems with this, particularly regarding scalability and maintainability. You might search your css file for where your navigation button is styled, but might end up with a variety of different places where different buttons are styled with the same name. For this reason, one should also avoid doing class selectors especially when going in that deep. Selecting body and html elements is okay because they only happen once, but selecting li's to do context-specific styling beyond normalization can get unwieldy and difficult to maintain later on.
+
+Maintainability means being able to change the color scheme of all of your navigational components on the fly without having to search too much, and knowing exactly where you need to make those changes. Further, using a system that uses sass tokens (variables) and (mostly) unnested, single-target selectors, you can increase the reusability of a selector.
+
+## Variables
+Take advantage of sass variables, which look like this:
+`$color-primary: rgb(200, 103, 23, 255)`
+
+and are implemented like so:
+```css
+.button--primary {
+	color: $color-primary;
+}
+```
+
+Easy cheezy lemon-squeezy. Gotta change the primary color with the new branding coming in? You got one place to change that color, everywhere.
+
+## @extending placeholder selectors, and @including mixins
+There are two specific approaches to creating chunks of css for reusablility. Mixins are the more common, and "best practice" way of creating reusable code:
+
+### Mixins
+```css
+// full width on mobile, 33% width on tablet and desktop
+@mixin third-to-full {
+	width: 100%;
+	
+	@media $tablet-up {
+		width: 33%;
+	}
+}
+```
+
+### Placeholder Selectors
+```css
+%button {
+	padding: 3em;
+	border-radius: 1em;
+}
+
+%background-secondary {
+	color.scale($color-secondary, $lightness: 30%); // lightens the color by 30%
+}
+
+// then we combine them here
+.btn {
+	@extend %button;
+	@extend %background-secondary;
+}
+```
+
+There are a number of benefits and also trade-offs to doing placeholder selectors, namely that:
+
+* Placeholder selectors don't "print" (aka compile to the final style.css file) if they aren't used, meaning that if you don't end up using them, they won't junk up your final product with "dead" code.
+* Placeholder selectors can't compute stuff for you by passing in variables like mixins.
+* By default, use mixins when possible, and if you aren't sure you're going to use the selector, use a placeholder.
+
+The major difference is how they compile to css:
+
+```css
+// using mixins imports the style into the target css
+.card {
+	width: 100%
+
+	@media $tablet-up {
+		width: 33%;
+	}
+}
+
+// using placeholders creates an association between the selectors that use it by creating a multi-selector
+.card, .side-bar, .table-of-contents {
+	width: 100%;
+
+	@media $tablet-up {
+		width: 33%;
+	}
+}
+```
+
+## Considering SOLID
+That's what Gen Z'ers are saying right? Along with... "that's mint!" (I don't know, I was scrolling through Tik Tok the other day don't judge me).
+
+To borrow some philosophy from the SOLID principles used in object oriented programming, we have this concept of single-responsibility, which is that every class (in our case a selector), should tackle only a single part of a program, and that it should fully encapsulate that single responsibility.
+
+Further, that class should only have one reason to change, which means separating your selectors between layout, cosmetic, and typographic can isolate each selector to have a *single responsibility* over your style. 
+
+Take a look at the premise of Object Oriented CSS (OOCSS), which separates the role of the selector like so:
+
+* Style ("Skin") vs Layout ("Structure")
+* Container vs Component
+
+There's a good article breaking that down here: [OOCSS - The Future of Writing CSS - KeyCDN](https://www.keycdn.com/blog/oocss)
+
+### Great, so where do I put this in to practice?
+Right, so something I'm still working on is trying to figure out where to make those separations apparent. Depending on the website/application, it could make sense to have it at the HTML level, like so:
+
+```html
+<article class="l-blog-post s-blog-post">
+```
+
+This doesn't feel right to me though, because while it is more visible at the HTML layer what will happen to the element, it runs the risk of creating long lists of classes attached to everything. I suppose if you agree upon a structure that limits the number of classes anything can have to say, up to four, then you can prevent too much clutter.
+
+I'd rather just be able to dive to the exact selector and then find what styles it extends its variables from. It does lead to more CSS, but CSS can be cached and minified.
+
+#### The HTML
+
+```html
+<article class="c-blog-post">
+```
+
+#### The CSS
+
+```css
+// in main.scss
+.c-blog-post {
+	@extend %l-spacing--post-card; // the l- namespace tells me that this lives in layout.scss
+	background: $background-card-secondary;
+	border-radius: $border-radius-small;
+}
+
+// In layout.scss
+.l-spacing--post-card {
+	padding: $spacing-x-large; // sass variable in tokens.scss
+	margin: rem(18px); // mixin for calculating rem from px
+}
+```
+
+Here's a more friendly diagram to look at how I'm thinking it through.
+
+[image:18F7FA72-1E80-402F-93F1-7A2D94A7471C-2458-0000A45BF07162FF/1-selector.png]
+
+Then to consider that in BEM, you use the modifier along with the base element, you can think of it as a sort of override class, like so:
+
+[image:2ECC5E37-5BA9-48D9-8F04-45A7A63EEF5E-2458-0000A45BF1C1D6A8/2-selector--modifier.png]
+
+What is nice about the BEM method is that it's easy to see what is actually a modification on a base style in the HTML, so if you know that there's something supposed to be special or unique to that version of a button, form element, that is indicated at the HTML level.
+
+This leads me to the other SOLID principle that pairs nicely with CSS structuring.
+
+## Open / Closed fights the nest
+Open/closed principle states that classes (and modules, functions, etc) should be open for extension, but closed for modification. It's a bit more complex in the real object oriented coding world, but in our case, this fits nicely with the BEM mechanism for creating modifiers, instead of nesting within existing base styles. The thing about this principle is that at first, it doesn't seem terrible to add additional selectors to a single class as you go and nest, and with small projects, this might be okay. But when you scale, you run into the problems that rscss states:
+
+* "What does this class mean?"
+* "Is this class still being used?"
+* "If I make a new class `green`, will there be a clash?"
+[rscss](https://rscss.io/)
+
+Here's what that might look like before we apply this principle:
+
+```css
+// some base style
+.btn {
+	@extend %button-structure;
+	@extend %button-skin;
+}
+```
+
+Which, if we modified might look like this, and the html element would have to have both `.btn` and `.btn-primary` in order to get the specified styling.
+
+```css
+// some base style
+.btn {
+	@extend %button-structure;
+	@extend %button-skin;
+
+	.btn-primary {
+		background-color: $color-primary;
+	}
+}
+```
+
+Then using BEM and open/closed principle, we "close" the `.btn` from changes for the purpose of a modifier, and create a separate class that extends the base, and puts the modifications in that selector instead.
+
+```css
+.btn {
+	@extend %button-structure;
+	@extend %button-skin;
+}
+
+.btn--primary {
+	@extend .btn;
+	// modifications here
+}
+```
+
+
+## Defining a Process
+1. Use BEM and semantic html when building the site from scratch. Start with a blank page with only a couple of individual components, like buttons, typography, etc. Develop the most reusable components first, before working on layout.
+2. To adjust and modify styles as needed with selectors that either modify existing blocks (using block--modifier) or extend some defined mixins and placeholder selectors.
+3. Refactor constantly. After more of the work has been done, you can start to see where you've repeated yourself.
+4. Figure out if you can consolidate those into their own mixins or basic blocks. 
+5. Carefully look at every HTML element with mixes of different selectors, and consider whether it will be maintainable and easily modified later.
+
+
+Excerpt From: Jonathan Snook. “Scalable and Modular Architecture for CSS.” Apple Books. 
+
+Resources:
+
+[How to have a clean CSS structure with RSCSS/ITCSS - JTWay by JetThoughts](https://jtway.co/how-to-have-clean-css-structure-with-rscss-itcss-2afc2e309126)
+
+[Using object oriented css with sass](http://thesassway.com/intermediate/using-object-oriented-css-with-sass)
+
+[CSS Properties Reference - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
+
+[OOCSS - The Future of Writing CSS - KeyCDN](https://www.keycdn.com/blog/oocss)
+
+<style type="text/css">
+td {
+  width: 33%;
+  text-align:center;
+}
+table {
+  width:100%;
+  margin-bottom: 20px;
+}
+th {
+  background:AliceBlue;
+}
+</style>

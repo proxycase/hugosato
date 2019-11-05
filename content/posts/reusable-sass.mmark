@@ -1,11 +1,10 @@
 ---
-title: "Reusable Sass"
+title: "Sassy refactor: making reusable sass components"
 date: 2019-11-01T11:49:28-05:00
 draft: false
 ---
 
-# Sassy refactor: making reusable sass components
-We looked at semantic names and roles of HTML elements, and creating better naming conventions to better visualize the relationship of css classes to their HTML elements using BEM. Now, we dive into refactoring the CSS/Sass world, in order to create better structure and maintainability.
+In the previous post, I looked at semantic names and roles of HTML elements, and creating better naming conventions to better visualize the relationship of css classes to their HTML elements using BEM. Now, I dive into refactoring the CSS/Sass world, in order to create better structure and maintainability.
 
 This week, I dove into refactoring different elements of my doggy daycare example project website. For this, I look closer at how to organize my stylistic choices, separate them from layouts, typography, tokens, and look at how sass deals with mixins, placeholder selectors, and more advanced sass concepts. How do we break down this giant boat of style and layout into individually addressable, modular parts, so we can modify and maintain our projects more quickly, and make collaboration easier?
 

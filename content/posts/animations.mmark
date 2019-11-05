@@ -1,0 +1,181 @@
+---
+title: "Intro to CSS Animations"
+date: 2019-11-04T14:15:12-06:00
+draft: false
+---
+
+Animation is all about the control of objects over time. In this post, we'll explore control over shapes and timeline with using css. If there's enough time, we'll also look at some Javascript libraries and how that can help us make more complex visualizations, as well as introduce some interactivity.
+
+---
+## Quick note on transitions
+To make something animate from one state to the next, you might not need something particularly fancy. In fact, if you have already a hover state that is different in appearance to the default state, by adding the `transition` property to that element can help create interactive animations based on what exactly you want to animate (which can be most anything, like shadow, margins, padding, etc). It looks like this:
+
+property name | duration | timing function | delay
+`transition: margin-right 4s ease-in-out 1s;`
+
+The separate properties are as such:
+* transition-property – what you want to transition
+* transition-duration - how long you want that to take
+* transition-timing-function - what kind of timing function you want
+* transition-delay - how much to wait before starting the animation
+
+## Animation Timing Functions
+* ease
+* ease-in
+* ease-out
+* ease-in-out
+* linear
+* step-start
+* step-end
+
+## CSS Animation Properties
+
+| | |
+| ---- | ---- |
+| animation | shorthand to allow for multiple parameters in a single line. |
+| animation-iteration-count | how many iterations to animate for, up to `infinite` |
+| animation-delay | how much time to wait before starting animation |
+| animation-name | target name for @keyframe to bind to and define |
+| animation-direction | which order to play keyframes |
+| animation-play-state | allows `paused` and `running` states |
+| animation-duration | define seconds or ms for duration |
+| animation-timing-function | sets type of animation style from ease, linear, and step. |
+| animation-fill-mode | defines the appearance of the element outside of the time it spends animating. See section on this property below. |
+
+### Animation-fill-mode
+This is easily the only property that just doesn't make sense right away. Consider that in an animated object, there is often time when the animation is not happening (for example, pre-click or pre-hover) and when the animation finishes (becomes static, starts the animation over, or reverses). The `animation-fill-mode` defines the "fill" of the element when it is static, either before or after the animation has occurred.
+
+To clarify, consider that an element with animation has five states:
+* Original state
+* Animation start state
+* Animating state
+* Animation end state
+* End state
+
+Or simpler yet, there's the time in which the element is animating, and time when it is not. `animation-fill-mode` deals with what happens before and after the animation and what that should look like.
+
+The `forward` attribute in this case is the most used for this property, as it "holds" the last frame of the animation, until further interaction. To learn more about this specific property, I spent some time with the examples on this website: [Understanding the CSS animation-fill-mode Property — SitePoint](https://www.sitepoint.com/understanding-css-animation-fill-mode-property/)
+
+### Common properties and their parameters
+| | |
+| --- | --- |
+| animation-timing-function | ease, ease-out, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) (e.g. cubic-bezier(0.5, 0.2, 0.3, 1.0)) |
+| animation-duration | Xs or Xms |
+| animation-delay | Xs or Xms |
+| animation-iteration-count| X|
+| animation-fill-mode | forwards, backwards, both, none |
+| animation-direction | normal, reverse, alternate, alternate-reverse |
+| animation-play-state | paused, running, running |
+
+## CSS At-rules
+At-rules are ways in which to tell CSS how to behave given certain situations. We've already seen them before in @media (to determine different styles at different screen widths) and @import (to import an external stylesheet).
+
+Once you define a css selector to have an animation with an `animation-name`, you have to define that animation with `@keyframe` like so:
+
+```css
+@keyframe animation-name {
+	// definition here
+}
+```
+
+### from: ~me~
+### to: ~santa~
+Determine keyframes either by defining values in from/to or intervals between 0% to 100%.
+
+```css
+@keyframes animation-name {
+	from {
+		// start style at first keyframe
+	}
+	to {
+		// target style at last keyframe
+	}
+}
+```
+
+```css
+@keyframes animation-name {
+	0% {
+		// start style at first keyframe
+	}
+	50% {
+		// in-between style at 50%
+	}
+	100% {
+		// target style at last keyframe
+	}
+}
+```
+
+## Triggering Animations
+There are only a couple of ways and reasons to trigger an animation:
+* on page load
+* some interaction (button hover, click)
+* some transition state
+
+By default, if an animation is simply applied to an element from the get-go, the animation will start as soon as the page loads. That also means that the element may start rotating or changing attributes before the content has loaded, causing it to appear as though it's animating from some in-between state. **Method 1:** If you want to hold off before the animation starts, you can set the `delay` parameter by seconds, or even milliseconds.
+
+**Method 2:** apply the animating css property to an element when you need it to animate, with a javascript function.
+
+```
+let watchme = document.getElementById('watchme')
+
+watchme.className = 'slidein'
+const listener = (e) => {
+  watchme.className = 'slidein stopped'
+}
+watchme.addEventListener('click', () =>
+  watchme.addEventListener('animationiteration', listener, false)
+)
+```
+
+## Benefits & Limitations of CSS vs JS Animations
+CSS is good for keeping things simple, and performant. Most browsers and systems will do a good job at handling smooth CSS animations, and they're generally pretty easy to use. JS animations can get skippy or less smooth unless they're well made. By using CSS animations, the browser gets the control over optimizing performance and efficiency, so there are additional, albeit invisible benefits.
+
+On the other hand, JS animations will give you more advanced control over timing, as well as programmatic control over variables. Meaning, CSS requires you to hard-code specifics on where to go and when (declarative approach), while JS allows you to say, map motion over a bezier function (imperative approach).
+
+### Additional note on collaboration
+One good thing to note here is that JS tends to use various libraries, while CSS is pretty much limited to the set of variables you can use. When working with other developers, if advanced animation is involved, it can mean that more time is spent training other devs who are not familiar with the particular animation toolset you are using. In that way, keeping it simple with CSS animations can help – especially if you really don't need fancy animations.
+
+## Using shorthand
+By using the `animation:`  property, you can avoid typing the various parameter names, with the trade-off being that it can be a little less clear and easily editable by someone who doesn't immediately know the order of the parameters.
+
+```
+.example {
+  animation: myAnim 2s 500ms 2 normal ease-in forwards;
+}
+```
+
+And of course, this same shorthand line can be expanded to:
+
+```
+.example {
+  animation-name: myAnim;
+  animation-duration: 2s;
+  animation-delay: 500ms;
+  animation-iteration-count: 2;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+```
+
+Like many things, any problems with this can be helped with a little notation and good documentation, so in the interest of saving visual space and time, you can use the `animation` shorthand and provide a comment above to describe what it's supposed to do. Better yet, use a descriptive name for the animation too.
+
+*Next up,* I'll post two examples from some animation experiments I've been toying around in codepen.
+
+
+
+<style type="text/css">
+td:nth-child(1) {
+  width: 10em;
+  text-align:center;
+}
+table {
+  width:100%;
+  margin-bottom: 20px;
+}
+th {
+  background:AliceBlue;
+}
+</style>

@@ -1,7 +1,7 @@
 baseURL = "https://proxycase.github.io/"
 languageCode = "en-us"
 title = "Hugh Sato"
-theme = "ezhil"
+theme = "hugosato"
 
 # Enable syntax highlighting.
 pygmentsstyle = "vs"

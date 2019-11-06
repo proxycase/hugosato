@@ -1,9 +1,15 @@
 ul {
-	list-style: disc inside;
+	list-style: ">  " inside;
+	text-shadow:  1px 1px 1px $color-accent;
+}
+
+li::marker {
+	font-weight: 800;
+	color: $color-accent;
 }
 
 .post ul li {
-	margin-bottom: 10px;
+	margin: $spacing-small 0;
 }
 
 .post ul li p {

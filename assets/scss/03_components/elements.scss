@@ -1,7 +1,7 @@
 code {
   padding: .15em;
 	margin:.2em;
-	background: rgb(243, 249, 255);
+	background: $color-accent-secondary;
 }
 
 .highlight code {
@@ -10,8 +10,8 @@ code {
 
 kbd {
 	font-size: .8em;
-	color: white;
-	background: #232b35;
+	color: $color-white;
+	background: $color-primary;
 	padding: .3em;
 	border-radius: 3px;
 }

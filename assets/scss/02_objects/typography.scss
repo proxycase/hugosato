@@ -1,76 +1,95 @@
+html {
+	font-size: $base-font-size;
+	letter-spacing: $base-font-spacing;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+	color: $color-base-text;
+}
+
 body {
 	font-family: mr-eaves-sans, sans-serif;
 	font-weight: 300;
 	font-style: normal;
-	color: rgb(65, 65, 65);
-	line-height: 1.7rem;
-	font-size: 1.2em;
+	color: $color-base-text;
+	line-height: $line-height-text;
+	font-size: $font-size-text-large;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-family: williams-caslon-text, serif;
-	line-height: 1.2;
+	line-height: $line-height-heading;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  color: #333;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $color-primary;
 }
 
 h1 {
-  font-size: 2.75rem
+	font-size: $font-size-heading-large;
 }
 
 h2 {
-  font-size: 2rem
+	font-size: $font-size-heading-medium;
 }
 
 h3 {
-  font-size: 1.6rem
+	font-size: $font-size-heading-small;
 }
 
 h4 {
-  font-size: 1.2rem
+	font-size: $font-size-heading-x-small;
 }
 
 h5 {
-  font-weight: 300;
-  font-size: 1rem
+	font-weight: 300;
+	font-size: $font-size-heading-x-small;
 }
 
 h6 {
-  font-weight: 300;
-  font-size: .9rem
+	font-weight: 300;
+	font-size: $font-size-heading-xx-small;
 }
 
 th {
-  font-size: 1.2em;
-  font-weight: 400;
+	font-size: $font-size-heading-small;
+	font-weight: 400;
 }
 
 blockquote {
-  font-style: italic;
-	font-size: 1.5rem;
-}
-
-html,button,input,select,textarea {
-  color: #222
+	font-style: italic;
+	font-size: $font-size-text-x-large;
 }
 
 ::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none
+	background: $color-accent;
+	text-shadow: none
 }
 
 ::selection {
-  background: #b3d4fc;
-  text-shadow: none
+	background: $color-accent;
+	text-shadow: none
 }
 
 .title {
 	font-family: williams-caslon-text, serif;
+	font-size: 1.1em;
 	font-weight: 700;
 	letter-spacing: .01em;
-	font-size: 1.1em;
 }
 
 nav a {
@@ -80,11 +99,12 @@ nav a {
 }
 
 a {
-    text-decoration: none;
+	color: $color-links;
+	text-decoration: none;
 }
 
 a:hover {
-	color: rgb(18, 47, 209);
+	color: $color-links-hover;
 }
 
 .post .post-header .title {
@@ -92,11 +112,11 @@ a:hover {
 }
 
 pre {
+	color: $color-secondary;
 	font-family: 'Courier New', Courier, monospace;
+	font-size: $font-size-text-medium;
 	font-weight: 400;
-	font-size: 1rem;
-	line-height: 1.8em;
-	color: rgb(65, 65, 65);
+	line-height: $line-height-text;
 }
 
 .o-centered {
@@ -105,22 +125,23 @@ pre {
 
 code {
 	font-family: 'Courier New', Courier, monospace;
-	font-size: 1rem;
+	font-size: $font-size-text-medium;
+	line-height: $line-height-text;
 }
 
 .c-funky-text__container {
-	width:100%;
+	width: 100%;
 	text-align: center;
 	margin-bottom: 20px;
 }
 
 .c-funky-text {
-	display:inline-block;
-	font-family: freude,sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	font-size: 1.5em;
-	background: #e2efff;
-	padding: 20px;
+	background: $color-accent;
 	border-radius: 20px;
+	display: inline-block;
+	font-family: freude, sans-serif;
+	font-size: 1.5em;
+	font-style: normal;
+	font-weight: 400;
+	padding: 20px;
 }

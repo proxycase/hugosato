@@ -1,0 +1,93 @@
+
+$color-background: rgba(238, 250, 252, 0.541);
+$color-base-text: #222;
+
+$color-primary: rgb(39, 39, 39);
+$color-primary-hover: darken($color-primary, 10%);
+
+$color-secondary: #626E7A;
+$color-secondary-hover: darken($color-secondary, 10%);
+
+$color-links: rgb(51, 82, 255);
+$color-links-hover: rgb(18, 47, 209);
+
+$color-white: #FFF;
+$color-black: #070707;
+$color-black-hover: darken($color-black, 10%);
+$color-black-secondary: rgba($color-black, 0.5);
+
+$color-accent: rgba(238, 220, 56, 0.945);
+$color-accent-light: lighten($color-accent, 10%);
+$color-accent-hover: darken($color-accent, 10%);
+
+$color-accent-secondary: rgb(220, 238, 255);
+
+$color-success: #58966B;
+$color-success-hover: darken($color-success, 10%);
+$color-error: #C81905;
+$color-error-hover: darken($color-error, 10%);
+
+// Fonts
+
+$font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+$font-family-monospace: monospace;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Font Size
+
+$base-font-size: 21px;
+$base-font-spacing: -0.004rem;
+
+$font-size-heading-xx-small: 0.825rem;
+$font-size-heading-x-small: 1rem;
+$font-size-heading-small: 1.25rem;
+$font-size-heading-medium: 1.5rem;
+$font-size-heading-large: 2.25rem;
+$font-size-heading-x-large: 3rem;
+$font-size-heading-xx-large: 4.5rem;
+$font-size-heading-xxx-large: 10rem;
+
+$font-size-text-xx-small: 0.5rem;
+$font-size-text-x-small: 0.625rem;
+$font-size-text-small: 0.75rem;
+$font-size-text-medium: 0.875rem;
+$font-size-text-large: 1rem;
+$font-size-text-x-large: 1.15rem;
+
+// Line Height
+
+$line-height-heading: 1.25;
+$line-height-text: 1.5;
+$line-height-tall: 2.2;
+
+// Kerning
+
+$letter-spacing-narrow: -10px;
+$letter-spacing-wide: 3px;
+
+// Spacing
+
+$spacing-x-small: 0.5rem;
+$spacing-xx-small: 0.25rem;
+$spacing-xxx-small: 0.125rem;
+$spacing-small: 0.75rem;
+$spacing-medium: 1rem;
+$spacing-large: 1.5rem;
+$spacing-x-large: 2rem;
+$spacing-xx-large: 3rem;
+$spacing-xxx-large: 4rem;
+
+// Time
+
+$duration-quickly: 0.1s;
+$duration-immediately: 0.05s;
+$duration-toast-medium: 9.6s;
+$duration-slowly: 0.4s;
+$duration-toast-short: 4.8s;
+$duration-paused: 3.2s;
+$duration-promptly: 0.2s;
+$duration-slide: 0.25s;

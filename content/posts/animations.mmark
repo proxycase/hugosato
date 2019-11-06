@@ -78,8 +78,7 @@ Once you define a css selector to have an animation with an `animation-name`, yo
 }
 ```
 
-### from: ~me~
-### to: ~santa~
+### from: *here* to: *there*
 Determine keyframes either by defining values in from/to or intervals between 0% to 100%.
 
 ```css

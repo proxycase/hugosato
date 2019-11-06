@@ -19,6 +19,10 @@
 	<link rel="stylesheet" href="https://use.typekit.net/qfb6lpj.css">
 
 
+	{{/*  {{ $styles := resources.Get "scss/main.scss" | toCSS | postCSS | minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">  */}}
+	{{ block "styles" . }}{{ partial "styles.html" . }}{{ end }}
+
 	<link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/normalize.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="{{ .Site.BaseURL }}css/main.css" />
 

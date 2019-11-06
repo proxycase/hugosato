@@ -1,12 +1,11 @@
 baseURL = "https://proxycase.github.io/"
 languageCode = "en-us"
 title = "Hugh Sato"
-theme = "hugosato"
 
-# Enable syntax highlighting.
-pygmentsstyle = "vs"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
+# Enable highlighted code fences
+pygmentsCodeFences = true
+pygmentsStyle = "vs"
+pygmentsCodeFencesGuessSyntax = true
 
 # Number of posts to show in recent posts list (Optional). Defaults to 10.
 paginate = 10
@@ -57,7 +56,3 @@ url = "https://www.instagram.com/abalonespider/"
 # Enable tags.
 [taxonomies]
    tag = "tags"
-
-# Enable highlighted code fences
-pygmentsCodeFences = "true"
-pygmentsStyle = "vs"

@@ -1,13 +1,4 @@
-[submodule "themes/indigo"]
-	path = themes/indigo
-	url = https://github.com/AngeloStavrow/indigo.git
-[submodule "themes/ananke"]
-	path = themes/ananke
-	url = https://github.com/budparr/gohugo-theme-ananke.git
 [submodule "public"]
 	path = public
 	url = git@github.com:proxycase/proxycase.github.io.git
 	branch = master
-[submodule "themes/themes/ananke"]
-	path = themes/themes/ananke
-	url = https://github.com/budparr/gohugo-theme-ananke.git

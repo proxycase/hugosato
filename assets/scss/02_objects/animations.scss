@@ -1,5 +1,12 @@
 $logo_duration: 0.9s;
 $animation-count: 1;
+$logo-backdrop-size: 90px;
+
+.logo__box {
+  height: $logo-backdrop-size;
+}
+
+// Backdrop Parts
 
 .logo__backdrop {
   opacity: 0%;
@@ -11,16 +18,6 @@ $animation-count: 1;
     animation: $logo_duration ease-out 0s $animation-count normal forwards running reveal-logo;
   }
 }
-
-.logo__dragonfly {
-  opacity: 0%;
-  z-index: 1000;
-
-  &--reveal {
-    animation: $logo_duration ease-out $logo_duration $animation-count normal forwards running reveal-dragonfly;
-  }
-}
-
 
 @keyframes reveal-logo {
   0% {
@@ -38,15 +35,54 @@ $animation-count: 1;
   }
 }
 
+// Dragonfly Parts
+
+$dragonfly-size: 100px;
+// Use base transform for any additional translations/scales you need otherwise it will reset
+$dragonfly-base-transform: scale(3) translateX(-35px);
+
+.logo__dragonfly {
+  display: inline-block;
+  height: $dragonfly-size;
+  width: $dragonfly-size;
+  transform: $dragonfly-base-transform;
+  opacity: 0%;
+}
+
+.logo__dragonfly--reveal {
+  background-image: url(https://proxycase.github.io/img/df-cells.svg);
+  background-size: cover;
+  
+  will-change: background-position;
+  
+  animation-name: fly-cycle, reveal-dragonfly;
+  animation-duration: .3s, 1s;
+  animation-direction: alternate, normal;
+  animation-timing-function: steps(8), ease-in;
+  animation-delay: $logo_duration + .4s, $logo_duration - .5s;
+  animation-iteration-count: 1, 1;
+  animation-fill-mode: none, forwards;
+}
+
+@keyframes fly-cycle {
+	100% {
+		background-position: -3600px 0;
+	}
+}
+
 @keyframes reveal-dragonfly {
   0% {
     opacity: 0%;
-    transform: translateY(-10px);
+    transform: $dragonfly-base-transform translateY(-10px);
+  }
+
+  50% {
+    opacity: 40%;
   }
 
   100% {
     opacity: 100%;
-    transform: translateY(0);
+    transform: $dragonfly-base-transform translateY(0);
   }
 }
 

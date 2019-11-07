@@ -1,17 +1,19 @@
 <div class="header">
 	{{ partial "logo.html" . }}
-	<h1 class="site-title">{{ .Site.Title }}</h1>
-	<div class="site-description">
-		{{- if isset .Site.Params "subtitle" -}}
-		<h2>{{ .Site.Params.Subtitle | markdownify }}</h2>
-		{{- end -}}
-		<nav class="nav social">
-			<ul class="flat">
-				{{- range $index, $key := .Site.Params.Social -}}
-				<a href="{{ $key.url }}" title="{{ $key.name }}"><i data-feather="{{ $key.icon }}"></i></a>
-				{{- end -}}
-			</ul>
-		</nav>
+	<div class="reveal__stagger">
+		<h1 class="site-title">{{ .Site.Title }}</h1>
+		<div class="site-description">
+			{{- if isset .Site.Params "subtitle" -}}
+			<h2>{{ .Site.Params.Subtitle | markdownify }}</h2>
+			{{- end -}}
+			<nav class="nav social">
+				<ul class="flat">
+					{{- range $index, $key := .Site.Params.Social -}}
+					<a href="{{ $key.url }}" title="{{ $key.name }}"><i data-feather="{{ $key.icon }}"></i></a>
+					{{- end -}}
+				</ul>
+			</nav>
+		</div>
 	</div>
 
 	<nav class="nav">

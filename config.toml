@@ -10,13 +10,13 @@ pygmentsCodeFencesGuessSyntax = true
 # Number of posts to show in recent posts list (Optional). Defaults to 10.
 paginate = 10
 
+staticDir = ["static", "assets"]
+
 [params]
     # Blog subtitle which appears below blog title. Supports markdown.
     subtitle = "Writings of an 8L Design Apprentice"
     # Content types which are included in home page recent posts list.
     mainSections = ["posts"]
-    # Content types which are excludes Disqus comments.
-    disableDisqusTypes = ["page"]
     # If social media links are enabled then enable this to fetch icons from CDN instead of hosted on your site.
     featherIconsCDN = true
 

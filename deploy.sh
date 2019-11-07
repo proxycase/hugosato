@@ -3,10 +3,13 @@
 # If a command fails then the deploy stops
 set -e
 
+echo "Removing existing files"
+rm -rf public/*
+
 printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
 
 # Build the project.
-hugo -t hugosato # if using a theme, replace with `hugo -t <ananke>`
+hugo # if using a theme, replace with `hugo -t <ananke>`
 
 # Go To Public folder
 cd public

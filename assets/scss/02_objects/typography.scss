@@ -12,7 +12,7 @@ textarea {
 }
 
 body {
-	font-family: mr-eaves-sans, sans-serif;
+	font-family: $font-family;
 	font-weight: 300;
 	font-style: normal;
 	color: $color-base-text;
@@ -26,16 +26,8 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: williams-caslon-text, serif;
+	font-family: $font-family-headings;
 	line-height: $line-height-heading;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
 	color: $color-primary;
 }
 
@@ -86,14 +78,14 @@ blockquote {
 }
 
 .title {
-	font-family: williams-caslon-text, serif;
-	font-size: 1.1em;
-	font-weight: 700;
+	font-family: $font-family-headings;
+	font-size: $font-size-text-x-large;
+	font-weight: $font-weight-bold;
 	letter-spacing: .01em;
 }
 
 nav a {
-	font-family: williams-caslon-text, serif;
+	font-family: $font-family-headings;
 	font-weight: 400;
 	font-size: 1.0em;
 }
@@ -113,18 +105,14 @@ a:hover {
 
 pre {
 	color: $color-secondary;
-	font-family: 'Courier New', Courier, monospace;
+	font-family: $font-family-monospace;
 	font-size: $font-size-text-medium;
 	font-weight: 400;
 	line-height: $line-height-text;
 }
 
-.o-centered {
-	text-align: center;
-}
-
 code {
-	font-family: 'Courier New', Courier, monospace;
+	font-family: $font-family-monospace;
 	font-size: $font-size-text-medium;
 	line-height: $line-height-text;
 }

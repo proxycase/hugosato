@@ -29,8 +29,9 @@ $color-error-hover: darken($color-error, 10%);
 
 // Fonts
 
-$font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-$font-family-monospace: monospace;
+$font-family: mr-eaves-sans, 'Helvetica Neue', sans-serif;
+$font-family-headings: williams-caslon-text, serif;
+$font-family-monospace: 'Courier New', Courier, monospace;
 $font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-semibold: 600;

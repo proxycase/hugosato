@@ -1,0 +1,67 @@
+---
+title: "Design system differences between iOS and Android"
+date: 2019-11-22T10:34:14-06:00
+draft: false
+---
+
+There's a lot of nuance in so many different areas considering the differences between both of these systems, so in this post, I will focus on just a couple of differences between the two design systems, rather than trying to accomplish a holistic coverage differentiating the two.
+
+## Themes & Principles
+There are a good number of similarities and a few key distinguishing elements between iOS and Android platforms. The similarities come from iterations over graphic and interaction design patterns as the web app and native app ecosystems mature. Of course, iOS and Android are not the only native platforms out there, but they are the most common as of this writing.
+
+The dissimilarities between the two, come from the underlying design patterns and philosophies. Android brought on Material Design as their guidelines, which uses real-world metaphors of paper, shadows, and layers to denote structure. iOS uses a similar approach based on spatial metaphors, but also a focus on consistency, subtlety, and immersiveness. 
+
+Both employ a flat, layered design system. However, because users have expectations about how each system operates, this affects where buttons are, how they are styled, how to pull up menus, what swiping does, and more.
+
+[Material Design](https://material.io/design/introduction/#principles)
+
+[iOS - Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/overview/themes/)
+
+## Popularity & Reach
+Both systems are designed to be cross-platform, from smartphone, tablet, to desktop. However, there is a clear difference in that Android users typically do not use an Android-based desktop system. Here's a shortlist of some platforms for each.
+
+| Material | Human Interface Guidelines|
+| --- | --- |
+Pixels and other Android phones | iPhones
+Pixel Slate, Lenovo Tab, Samsung Galaxy Tablets | iPads
+Pixelbook | Macbook
+Chromecast | AppleTV / tvOS
+wearOS | watchOS
+
+As of October 2019, Android users estimate around 69.7% of the market, while iOS stands at around 29.1%, according to [netmarketshare](https://www.netmarketshare.com/operating-system-market-share.aspx?options=%7B%22filter%22%3A%7B%22%24and%22%3A%5B%7B%22deviceType%22%3A%7B%22%24in%22%3A%5B%22Mobile%22%5D%7D%7D%5D%7D%2C%22dateLabel%22%3A%22Trend%22%2C%22attributes%22%3A%22share%22%2C%22group%22%3A%22platform%22%2C%22sort%22%3A%7B%22share%22%3A-1%7D%2C%22id%22%3A%22platformsDesktop%22%2C%22dateInterval%22%3A%22Monthly%22%2C%22dateStart%22%3A%222018-11%22%2C%22dateEnd%22%3A%222019-10%22%2C%22segments%22%3A%22-1000%22%7D). Other sources state similar results as well. That being said, iOS users tend to have higher income, education levels, and more app engagement, meaning companies (for better or for worse) tend to focus on iOS first when designing and developing for a mobile audience. However, in order to remain accessible and reachable from a larger audience, it's important to support both when possible. 
+
+The benefit of both platforms competing is that they tend to both follow each other when it comes to design patterns and interactions, minimizing differences between them. There are additional resources for developers needing to save time in this process, like React Native, which can output to both platforms from one codebase. The trade-off here is that you lose a bit of design tailoring to each platform – meaning that users familiar with iOS might experience UI patterns that they're not usually familiar with, and vice versa.
+
+Still, the best solution (if the client can afford it) is to approach the design and implementation of each platform separately to take advantage of the individual benefits of each system.
+
+## Navigation
+Android and iOS devices without physical home buttons both recently implemented a single bar at the bottom of the screen that can be pulled up for returning home, switching apps, and drawing up the app menu. That being said, most Android devices still employ a three button nav bar – back, home, and switch app. Most older iPhones have a physical single button that returns people to home, with double-tap for switching.
+
+![Navigational bars example android](/img/android-pie-navigation-bars-christian-ghanime.png)
+
+This means for the most part, Android apps often don't need to implement back buttons the way that iOS devices do (at the top left corner) because it's built into the interface. Android is now pushing a more gesturally-based interface with a single button on the bottom, but they have the back button still available along with it.
+
+More at [Interaction Design patterns : iOS vs Android - Ved - Medium](https://medium.com/@vedantha/interaction-design-patterns-ios-vs-android-111055f8a9b7)
+
+### Search
+Search is typically found in the same areas for both systems, though there are nuanced differences in how they appear, and what they do when they are selected. 
+
+### Actions
+Especially when adding items to a list, the material design guidelines uses a circular (+) sign (floating action button "FAB") usually floating (with a drop shadow) around on the bottom right of the screen. iOS has this either as a top right bar item, or as a bottom navigational item, depending on the context.
+
+![Primary actions locations](/img/controls-cta.png)
+
+[iOS vs. Android App UI Design: The Complete Guide – Learn UI Design](https://learnui.design/blog/ios-vs-android-app-ui-design-complete-guide.html)
+
+## Scalability, Icons & Images
+Because of the nature of the Android platform, it's common to see lots of different pixel densities across devices that use Android. The same is true for the iPhone, though the number of those devices is far fewer – the benefit of which is that for both exporting icons and images, resources with fixed pixel densities and sizes – it's needed to export different sizes of the same resource in order to accommodate all the varieties. Depending on the logo, however, this may involve some extra design work to make sure the tracking and kerning is just as sharp and legible on smaller sizes.
+[Text – Thinking With Type](http://thinkingwithtype.com/text/)
+
+## Press and Hold
+Several contextual menus appear on "long press" behavior on Android and iOS. While iOS toyed around with 3D touch for a phone series, they removing it as of iPhone 11 for "Haptic Touch" which is pretty much the same thing as a long press found on Android. These interactions are becoming more common, and we should probably expect to see a lot more overlap over time as each system learns from each other and borrows ideas that traverse and exchange between the Android, iOS, and web app platforms.
+
+## More resources
+
+[iOS vs. Android App UI Design: The Complete Guide – Learn UI Design](https://learnui.design/blog/ios-vs-android-app-ui-design-complete-guide.html#secondary-nav)
+
+[The Ultimate Guide To iPhone Resolutions](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)

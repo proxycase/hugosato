@@ -1,0 +1,7 @@
+.c-social-nav {
+  display: none;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
+}

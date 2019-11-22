@@ -31,6 +31,31 @@ h6 {
 	color: $color-primary;
 }
 
+body {
+	padding: 20px;
+}
+
+h1 {
+	font-size: 2rem
+}
+
+h2 {
+	font-size: 1.4rem
+}
+
+h3 {
+	font-size: 1.2rem
+}
+
+h4 {
+	font-size: 1rem
+}
+
+.container {
+	margin-top: 10px;
+}
+
+@media (min-width: 767px) {
 h1 {
 	font-size: $font-size-heading-large;
 }
@@ -56,6 +81,9 @@ h6 {
 	font-weight: 300;
 	font-size: $font-size-heading-xx-small;
 }
+}
+
+
 
 th {
 	font-size: $font-size-heading-small;

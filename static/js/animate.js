@@ -2,6 +2,7 @@ let backdrop
 let dragonfly
 let header
 
+
 window.onload = () => {
   backdrop = document.querySelector('.logo__backdrop')
   dragonfly = document.querySelector('.logo__dragonfly')

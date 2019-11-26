@@ -4,11 +4,11 @@ date: 2019-11-26T09:56:35-06:00
 draft: false
 ---
 
-This week, I paired with Kevin to learn how React was being used to build the front-end for one of 8th Light's clients. After learning how this project was structured, from using React with Typescript, and Storyboard, he gave me this little component to try out and build from an empty React environment.
+This week, I paired with Kevin to learn how React was being used to build the front-end for one of 8th Light's clients. After learning how this project was structured, from using React with Typescript, he gave me this little component to try out and build from an empty React environment.
 
 ![Whole component image with checked and unchecked components](/img/whole-component.png)
 
-After going through the basic React tutorial, I had some understanding of how components are structured, pass values to each other, and how to create stateless functions, as well as classes. It definitely helped to have some Javascript background here as React (and Typescript) really take the base ES6 technologies and extends them to this beautiful, component-based app ecosystem that keeps things fast, semantic, and (hopefully) legible by other devs.
+After going through the basic React tutorial, I had some understanding of how components are structured, pass values to each other, and how to create stateless functions and classes. It definitely helped to have some Javascript background here, because React (and Typescript) really take the base ES6 technologies and extends them to this beautiful, component-based app ecosystem that keeps things fast, semantic, and (hopefully) legible by other devs.
 
 ## Starting it up
 

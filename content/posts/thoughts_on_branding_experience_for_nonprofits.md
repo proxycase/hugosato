@@ -1,12 +1,12 @@
 ---
-title: "Thoughts_on_branding_experience_for_nonprofits"
+title: "Thoughts on branding experience for nonprofits"
 date: 2019-12-04T12:39:10-06:00
 draft: false
 ---
 
-I think about the ways in which branding is used not just by designers, but also by people using the most available tools, because non-profits and less technically oriented organizations are often the quickest to use branding incorrectly, either because there is no dedicated designer, or lack of training, and a plethora of other reasons. Having worked for several non-profits, I know that time is precious, and so is budget.
+I've been thinking about the ways in which branding is used not just by designers, but also by people using the most available tools. Non-profits and non-tech companies are often the quickest to use branding incorrectly, either because there is no dedicated designer, lack of training, and a plethora of other reasons. Having worked for several non-profits, I know that time is precious, and so is budget – so getting results quickly with the least amount of effort is paramount to a small (often overworked) staff.
 
-So when a poster is needed to advertise an event or signage is needed, branding is often times ignored because of the availability of those tools to accommodate branding – for example, a company I worked for started to use a free, online-based design app that had built-in presets for design templates. While none of these templates followed the design branding put in place, these were easy choices for a company that didn't have enough resources to dedicate to design, and wanted to have the largest amount of impact as quickly as possible.
+When a poster is needed to advertise an event or signage is needed, branding is often times ignored because of the availability of those tools to accommodate branding – for example, a company I worked for started to use a free, online-based design app that had built-in presets for design templates. While none of these templates followed the design branding put in place, these were easy choices for a company that didn't have enough resources to dedicate to design, and wanted to have the largest amount of impact as quickly as possible.
 
 So that all being said, there are a couple of things that I can provide as guidance for these organizations when developing a brand.
 
